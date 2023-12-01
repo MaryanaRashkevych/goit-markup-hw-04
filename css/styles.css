@@ -31,8 +31,8 @@ img {
 .container {
   width: 1158px;
   padding: 0 15px;
-  margin-left: 0 auto;
-  margin-right: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 /*=========HEADER=======*/
 .header-container {
@@ -83,10 +83,20 @@ img {
   color: #2e2f42;
   display: block;
   padding: 24px 0;
+  position: relative;
 }
-
-.nav-links:hover {
-  color: #404bbf;
+.nav-links:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 48px;
+  height: 4px;
+  margin-top: 20px;
+  border-radius: 2px;
+  background: #404bbf;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-links:focus {
   color: #404bbf;
@@ -103,6 +113,7 @@ img {
   line-height: 24px;
   letter-spacing: 0.02em;
   padding: 24px 0;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts-links:hover {
   color: #404bbf;
@@ -115,6 +126,12 @@ img {
   background-color: #2e2f42;
   padding: 188px 0;
   text-align: center;
+  background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url('../images/bg.jpg');
+  background-size: cover 1440px;
 }
 .main-title {
   color: #fff;
@@ -144,6 +161,7 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-order-service:hover {
   background-color: #404bbf;
@@ -177,6 +195,23 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+.features-icons-list {
+  display: flex;
+  column-gap: 24px;
+  row-gap: 8px;
+}
+.features-icons-item {
+  width: 264px;
+  height: 112px;
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid #8e8f99;
+  background: #f4f4fd;
+  justify-content: center;
+  align-items: center;
+}
+
 .features-list {
   display: flex;
   flex-direction: row;
@@ -192,7 +227,6 @@ img {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  margin-top: 32px;
   padding-bottom: 0px;
 }
 .features-title {
@@ -205,7 +239,6 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   text-align: left;
-  padding-bottom: 32px;
 }
 /*======= 3 Section =======*/
 .container-team-section {
@@ -228,6 +261,9 @@ img {
 .team-list-item {
   width: calc((100% - 3 * 24px) / 4);
   border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 .team-description {
   padding: 32px 0;
@@ -238,6 +274,29 @@ img {
 .third-title-center-style {
   text-align: center;
   margin-bottom: 8px;
+}
+.social-net-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  justify-content: center;
+}
+.social-icons-ref {
+  display: flex;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  background-color: #4d5ae5;
+  justify-content: center;
+  align-items: center;
+  fill: #f4f4fd;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-icons-ref:hover {
+  background-color: #404bbf;
+}
+.social-net-item {
+  margin: 0 auto;
 }
 /*========= 4 Section ========*/
 .container-portfolio-section {
@@ -263,15 +322,39 @@ img {
   text-align: left;
   margin-bottom: 8px;
 }
+.text-overlay {
+  overflow: auto;
+}
+.text-relative {
+  position: relative;
+  overflow: hidden;
+}
+.text-absolute {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  padding: 40px 32px;
+  width: 100%;
+  height: 100%;
+  background: #4d5ae5;
+  translate: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.text-absolute:hover {
+  transform: translateY(-100%);
+}
 /*======= Footer ======*/
 .container-footer {
   padding: 100px 0;
   background-color: #2e2f42;
 }
-.footer-container {
-  display: inline-block;
-  flex-direction: column;
-  justify-content: center;
+.footer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 120px;
 }
 .logo-footer {
   color: #4d5ae5;
@@ -283,7 +366,6 @@ img {
   text-transform: uppercase;
   display: inline-block;
   margin-bottom: 16px;
-  margin-left: 156px;
 }
 .logo-word-white {
   color: #f4f4fd;
@@ -293,7 +375,20 @@ img {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.03em;
   max-width: 264px;
-  margin-left: 156px;
+}
+.text-social {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+}
+.footer-social-net-list {
+  column-gap: 16px;
+}
+.container-footer .social-icons-ref:hover {
+  background-color: #31d0aa;
 }
